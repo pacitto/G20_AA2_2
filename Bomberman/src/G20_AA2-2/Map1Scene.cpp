@@ -2,10 +2,11 @@
 
 Map1Scene::Map1Scene()
 {
+	state = SceneStates::MAP1_RUNNING;
 	backgroundId = GAME::BACKGROUND_ID;
 	backgroundRect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-	player1 = Player(1);
-	player2 = Player(2);
+	player1 = new Player(1);
+	player2 = new Player(2);
 	InitMap();
 	ReadConfig();
 }
@@ -41,19 +42,19 @@ void Map1Scene::ReadConfig()
 
 	//player1
 	rapidxml::xml_attribute<>* pAttr = pNodeII->first_attribute();
-	player1.SetLives(std::atoi(pAttr->value()));
+	player1->SetLives(std::atoi(pAttr->value()));
 	pAttr = pNodeIII->first_attribute();
-	player1.SetInitialPos({ std::atoi(pAttr->value()), std::atoi(pAttr->next_attribute()->value()) });
-	map[player1.GetInitialPos().x][player1.GetInitialPos().y] = '1';
+	player1->SetInitialPos({ std::atoi(pAttr->value()), std::atoi(pAttr->next_attribute()->value()) });
+	map[player1->GetInitialPos().x][player1->GetInitialPos().y] = '1';
 
 	//player2
 	pNodeII = pNodeII->next_sibling();
 	pNodeIII = pNodeII->first_node("Positon");
 	pAttr = pNodeII->first_attribute();
-	player2.SetLives(std::atoi(pAttr->value()));
+	player2->SetLives(std::atoi(pAttr->value()));
 	pAttr = pNodeIII->first_attribute();
-	player2.SetInitialPos({ std::atoi(pAttr->value()), std::atoi(pAttr->next_attribute()->value()) });
-	map[player2.GetInitialPos().x][player2.GetInitialPos().y] = '2';
+	player2->SetInitialPos({ std::atoi(pAttr->value()), std::atoi(pAttr->next_attribute()->value()) });
+	map[player2->GetInitialPos().x][player2->GetInitialPos().y] = '2';
 
 	//map
 	pNodeI = pNodeI->next_sibling();
@@ -74,8 +75,8 @@ void Map1Scene::ReadConfig()
 	}
 
 
-	std::cout << "Player 1 lives: " << player1.GetLives() << ", player 1 pos: " << player1.GetInitialPos().x << ", " << player1.GetInitialPos().y << std::endl;
-	std::cout << "Player 2 lives: " << player2.GetLives() << ", player 2 pos: " << player2.GetInitialPos().x << ", " << player2.GetInitialPos().y << std::endl << std::endl;
+	std::cout << "Player 1 lives: " << player1->GetLives() << ", player 1 pos: " << player1->GetInitialPos().x << ", " << player1->GetInitialPos().y << std::endl;
+	std::cout << "Player 2 lives: " << player2->GetLives() << ", player 2 pos: " << player2->GetInitialPos().x << ", " << player2->GetInitialPos().y << std::endl << std::endl;
 	std::cout << "Map: " << std::endl;
 	for (int i = 0; i < HEIGHT; i++)
 	{
@@ -90,13 +91,26 @@ void Map1Scene::ReadConfig()
 
 void Map1Scene::Update(bool* _inputs, VEC2 _mousePos)
 {
-
+	switch (state)
+	{
+	case MAP1_RUNNING:
+		player1->Update(_inputs);
+		player2->Update(_inputs);
+		break;
+	case MAP1_ENTER_NAME:
+		break;
+	case MAP1_EXIT:
+		break;
+	default:
+		break;
+	}
 }
 
 void Map1Scene::Draw()
 {
 	Renderer::Instance()->Clear();
 	Renderer::Instance()->PushImage(backgroundId, backgroundRect);
+
 	for (int i = 0; i < HEIGHT; i++)
 	{
 		for (int j = 0; j < WIDTH; j++)
@@ -108,16 +122,12 @@ void Map1Scene::Draw()
 			else if (map[j][i] == 'B')
 			{
 				Renderer::Instance()->PushSprite(ITEMS_SPRITESHEET::ID, RECT{ ITEMS_SPRITESHEET::SIZE, 0, ITEMS_SPRITESHEET::SIZE, ITEMS_SPRITESHEET::SIZE }, RECT{ j * ITEMS_SPRITESHEET::SIZE + OFFSET_X, i * ITEMS_SPRITESHEET::SIZE + OFFSET_Y , ITEMS_SPRITESHEET::SIZE, ITEMS_SPRITESHEET::SIZE });
-			}
-			
+			}			
 		}
-
-
 	}
 
-	player1.Draw();
-	player2.Draw();
-			
+	player1->Draw();
+	player2->Draw();
 
 	Renderer::Instance()->Render();
 }

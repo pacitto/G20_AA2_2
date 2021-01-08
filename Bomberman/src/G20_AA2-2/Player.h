@@ -9,19 +9,19 @@ class Player
 private:
 	int id; 
 	int lives;
-	VEC2 initialPos;
-	VEC2 currentPos;
+	VEC2 initialPos;	
 	InputKey left; 
 	InputKey right; 
 	InputKey up; 
 	InputKey down; 
 	InputKey bomb; 
 	
-	std::string spriteId; 
-	RECT animationFrame; 
-	
 	void SetUpPlayer();
 public:
+	VEC2 currentPos;
+	std::string spriteId;
+	RECT animationFrame;
+
 	Player(); 
 	Player(int _id);
 	void SetLives(int _lives);

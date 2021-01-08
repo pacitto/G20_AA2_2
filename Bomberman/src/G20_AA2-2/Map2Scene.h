@@ -13,8 +13,8 @@ class Map2Scene : public Scene
 {
 private:
     HUD* hud;
-    Player player1;
-    Player player2;
+    Player *player1;
+    Player *player2;
     std::string backgroundId;
     RECT backgroundRect;
     char** map;

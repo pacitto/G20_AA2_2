@@ -1,5 +1,15 @@
-﻿  Player.cpp
-C:\Users\pc\Documents\Programacion\G20_Bomberman\Bomberman\src\G20_AA2-2\Player.cpp(26,12): warning C4834: se descarta el valor devuelto de la función con el atributo "nodiscard"
-C:\Users\pc\Documents\Programacion\G20_Bomberman\Bomberman\src\G20_AA2-2\Player.cpp(37,12): warning C4834: se descarta el valor devuelto de la función con el atributo "nodiscard"
-  G20_AA2-2.vcxproj -> C:\Users\pc\Documents\Programacion\G20_Bomberman\Bomberman\bin\x64Debug\G20_AA2-2.exe
+﻿  Button.cpp
+  Game.cpp
+  HUD.cpp
+  Inputs.cpp
+  Main.cpp
+  Map1Scene.cpp
+  Map2Scene.cpp
+  MenuScene.cpp
+  Player.cpp
+  RankingScene.cpp
+  Renderer.cpp
+  Scene.cpp
+  Generando código...
+  G20_AA2-2.vcxproj -> C:\Users\pc\Documents\Programacion\Bomberman\G20_AA2_2\Bomberman\bin\x64Debug\G20_AA2-2.exe
   0 archivo(s) copiado(s)
