@@ -1,0 +1,7 @@
+﻿  Source.cpp
+C:\Users\nbr19\Desktop\G20_Bomberman\Bomberman\src\Bomberman\Source.cpp(49,121): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\nbr19\Desktop\G20_Bomberman\Bomberman\src\Bomberman\Source.cpp(49,81): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\nbr19\Desktop\G20_Bomberman\Bomberman\src\Bomberman\Source.cpp(49,41): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1316,5): warning MSB8012: TargetPath(C:\Users\nbr19\Desktop\G20_Bomberman\Bomberman\\bin\x64Release\Bomberman.exe) does not match the Linker's OutputFile property value (C:\Users\nbr19\Desktop\G20_Bomberman\Bomberman\dep\lib\x64). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1318,5): warning MSB8012: TargetName(Bomberman) does not match the Linker's OutputFile property value (x64). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+LINK : fatal error LNK1181: cannot open input file 'SDL2.lib'
